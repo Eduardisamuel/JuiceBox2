@@ -1,10 +1,3 @@
-require('dotenv').config()
-
-// remove this once you confirm it works
-// console.log(process.env.JWT_SECRET)
-// like, seriously. go delete that!
-
-// EVERYTHING ELSE
 
 const PORT = process.env.PORT || 3000
 const express = require('express')
