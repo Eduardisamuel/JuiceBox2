@@ -1,13 +1,16 @@
-
+require('dotenv').config()
 const PORT = process.env.PORT || 3000
 const express = require('express')
 const server = express()
 server.use(express.json())
+
 const apiRouter = require('./API')
+
+
 const morgan = require('morgan')
 const { client } = require('./db')
 client.connect()
-server.use('/api', apiRouter)
+
 server.use(morgan('dev'))
 
 server.use((req, res, next) => {
@@ -18,7 +21,12 @@ server.use((req, res, next) => {
   next()
 })
 
-server.use(express.json()) // Parse JSON request bodies
+
+
+server.use(express.json()) 
+server.use('/api', apiRouter)
+
+
 server.listen(PORT, () => {
   console.log('The server is up on port', PORT)
 })
